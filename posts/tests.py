@@ -28,3 +28,19 @@ class HelloTestCase(TestCase):
         self.assertEqual(responce_post.content.decode(), expect_post)
 
 
+    def test_contacts(self):
+        responce_contact = self.client.get(reverse("contacts-view"))
+
+        expect_contacts = "Контакты"
+
+        self.assertEqual(responce_contact.content.decode(), expect_contacts)
+
+    def test_about(self):
+        responce_about = self.client.get(reverse("about-view"))
+
+        expect_about = "Данные"
+
+        self.assertEqual(responce_about.content.decode(), expect_about)
+
+
+

@@ -3,22 +3,7 @@ from django.http import HttpResponse
 
 
 def hello(request):
-    # my_list = [1, 2, 3, 4]
     body = "<h1>Hello</h1>"
-    # body = """
-    #     <!DOCTYPE html>
-    #         <html>
-    #             <head>
-    #                 <title>GeekTest</title>
-    #             </head>
-    #             <body>
-
-    #                 <h1>ЗАголовок 1 уровня</h1>
-    #                 <p>Параграф</p>
-
-    #             </body>
-    #         </html>
-    # """
     headers = {"name":"Alex",
                 "Content-type":"application/vnd.ms-excel",
                 "Content-Disposition":"attachment; filename = file.xls"
@@ -33,5 +18,12 @@ def get_index(request):
     else:
         return HttpResponse("Не тот запрос")
 
+
+def get_contacts(request):
+    return HttpResponse("Контакты")
+
+
+def get_about(request):
+    return HttpResponse("Данные")
 
 # Create your views here.

@@ -16,31 +16,21 @@ class HelloTestCase(TestCase):
 
 
     def test_get_index(self):
-        responce_get = self.client.get(reverse("index-page"))
-        responce_post = self.client.post(reverse("index-page"))
+        responce = self.client.get(reverse("index-page"))
 
-        expect_get = "Главная страница"
-        expect_post = "Не тот запрос"
-
-        self.assertEqual(responce_get.status_code, 200)
-        self.assertEqual(responce_post.status_code, 200)
-        self.assertEqual(responce_get.content.decode(), expect_get)
-        self.assertEqual(responce_post.content.decode(), expect_post)
+        self.assertTemplateUsed(responce, "posts/index.html")
+        self.assertEqual(responce.status_code, 200)
 
 
-    def test_contacts(self):
-        responce_contact = self.client.get(reverse("contacts-view"))
+    def test_get_contacts(self):
+        responce = self.client.get(reverse("contacts-view"))
 
-        expect_contacts = "Контакты"
-
-        self.assertEqual(responce_contact.content.decode(), expect_contacts)
-
-    def test_about(self):
-        responce_about = self.client.get(reverse("about-view"))
-
-        expect_about = "Данные"
-
-        self.assertEqual(responce_about.content.decode(), expect_about)
+        self.assertTemplateUsed(responce, "posts/contacts.html")
+        self.assertEqual(responce.status_code, 200)
 
 
+    def test_get_about(self):
+        responce = self.client.get(reverse("about-view"))
 
+        self.assertTemplateUsed(responce, "posts/about.html")
+        self.assertEqual(responce.status_code, 200)

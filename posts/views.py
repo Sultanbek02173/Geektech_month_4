@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from posts.models import Post
 
 
 def hello(request):
@@ -13,6 +14,7 @@ def hello(request):
 
 
 def get_index(request):
+    posts  = Post.objects.filter(status=True)
     # print(request.user)
     # if request.method == "GET":
     #     return HttpResponse("Главная страница")
@@ -21,7 +23,7 @@ def get_index(request):
 
     context = {
         "title": "Main page",
-        "my_list": {1,2,3,4},
+        "posts": posts,
     }
     return render(request, "posts/index.html", context=context)
 
@@ -41,4 +43,30 @@ def get_about(request):
     }
     return render(request, "posts/about.html", context=context)
 
+
+def get_post(request):
+    posts  = Post.objects.filter(status=True)
+    context = {
+        "title": "Посты",
+        "posts": posts,
+    }
+    return render(request, "posts/post_create.html", context=context)
+
+
+def update_post(request):
+    posts  = Post.objects.filter(status=True)
+    context = {
+        "title": "Посты",
+        "posts": posts,
+    }
+    return render(request, "posts/post_update.html", context=context)
+
+
+def delete_post(request):
+    posts  = Post.objects.filter(status=True)
+    context = {
+        "title": "Посты",
+        "posts": posts,
+    }
+    return render(request, "posts/post_detail.html", context=context)
 # Create your views here.

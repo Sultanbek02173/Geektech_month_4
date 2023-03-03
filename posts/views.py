@@ -45,28 +45,22 @@ def get_about(request):
 
 
 def get_post(request):
-    posts  = Post.objects.filter(status=True)
     context = {
         "title": "Посты",
-        "posts": posts,
     }
     return render(request, "posts/post_create.html", context=context)
 
 
 def update_post(request):
-    posts  = Post.objects.filter(status=True)
     context = {
         "title": "Посты",
-        "posts": posts,
     }
     return render(request, "posts/post_update.html", context=context)
 
 
 def delete_post(request):
-    posts  = Post.objects.filter(status=True)
     context = {
         "title": "Посты",
-        "posts": posts,
     }
     return render(request, "posts/post_detail.html", context=context)
 # Create your views here.

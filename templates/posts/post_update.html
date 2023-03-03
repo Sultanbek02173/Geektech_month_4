@@ -2,19 +2,8 @@
 {% block content %}
 
     <h1>Обновление постов</h1>
-    {% for post in posts %}
 
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h1>Обновление постов</h1>
-          <h5 class="card-title">{{post.title}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{{ post.created }}</h6>
-          <p class="card-text">{{ post.content|truncatewords:10 }}</p>
-        </div>
-      </div>
-      <br>
-    {% endfor %}
-    <br>
+    <a href="{% url 'index-page' %}">Главная</a> <br>
     <a href="{% url 'about-view' %}">Страница о нас</a> <br>
     <a href="{% url 'contacts-view' %}">Контакты</a>
       

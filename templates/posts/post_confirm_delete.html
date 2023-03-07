@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Вы уверены удалить этот пост,<br> он будет удален навсегда!</h5>      
+      <form action="{% url 'post-delete' post.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Да</button>
+        <a href="{% url 'post-detail' post.pk %}" class="card-link"><button type="button">Нет</button></a>
+        <!--  не знаю правильно ли это, но это строка работает как форма редактирование!!!??? -->
+        <!-- <a href="{% url 'post-update' post.pk %}"> <button type="button">Редактировать пост</button></a><br> -->
+        </form>
+
+    </div>
+</div>
+{% endblock %}

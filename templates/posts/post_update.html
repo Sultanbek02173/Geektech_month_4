@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
+
 {% block content %}
+    <h1>Post Update</h1>
 
-    <h1>Обновление постов</h1>
+    <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Обновить запись</button>
+    </form>
 
-    <a href="{% url 'index-page' %}">Главная</a> <br>
-    <a href="{% url 'about-view' %}">Страница о нас</a> <br>
-    <a href="{% url 'contacts-view' %}">Контакты</a>
-      
+    {% include 'posts/includes/links_includes.html' %}
 {% endblock %}

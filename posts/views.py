@@ -48,7 +48,9 @@ class IndexView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = "Просмотр поста"
+        posts = Post.objects.filter(status=True)
+        context["title"] = "Главная страница"
+        context["posts"] = posts
         return context
 
 
